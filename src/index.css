@@ -1,68 +1,737 @@
+/* Base Styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Coffee Theme Colors */
+  --color-primary: #8B5A2B;
+  --color-secondary: #D2B48C;
+  --color-accent: #A0522D;
+  --color-dark: #3B2F2F;
+  --color-light: #F5F0E1;
+  --color-background: #FAF6F1;
+  --color-highlight: #E6C9A8;
+  --color-accent-light: #DEB887;
+  --color-accent-dark: #654321;
+  
+  /* Grays */
+  --color-gray-100: #FAF6F1;
+  --color-gray-200: #E6C9A8;
+  --color-gray-300: #D2B48C;
+  --color-gray-400: #B89B7A;
+  --color-gray-500: #8B7355;
+  --color-gray-600: #6F4E37;
+  --color-gray-700: #5D4037;
+  --color-gray-800: #4E342E;
+  --color-gray-900: #3B2F2F;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(139, 90, 43, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(139, 90, 43, 0.1), 0 2px 4px -1px rgba(139, 90, 43, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(139, 90, 43, 0.1), 0 4px 6px -2px rgba(139, 90, 43, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(139, 90, 43, 0.1), 0 10px 10px -5px rgba(139, 90, 43, 0.04);
+  
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-full: 9999px;
+  
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Mengatur margin, padding, box-sizing, dan font default untuk seluruh elemen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--color-background);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-gray-800);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-dark);
+  margin-bottom: 0.5em;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+button, .button {
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all var(--transition-normal);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(to right, var(--color-light), var(--color-background));
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-md);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-highlight);
+}
+
+/* Mengatur kontainer navbar agar responsif dan terpusat */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Mengatur gaya untuk logo di navbar */
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+/* Mengatur gaya untuk link navigasi di navbar */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Mengatur gaya untuk link di dalam navbar */
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-gray-700);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width var(--transition-normal);
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* Mengatur gaya untuk gambar hero */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mengatur overlay untuk efek gradien di section hero */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(59, 47, 47, 0.7), rgba(160, 82, 45, 0.7));
+}
+
+.hero-content {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-button {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Mengatur gaya untuk indikator carousel di hero section */
+.carousel-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+/* Mengatur gaya untuk indikator individual di carousel */
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* Mengatur gaya untuk indikator aktif di carousel */
+.indicator.active {
+  background-color: white;
+  transform: scale(1.3);
+}
+
+/* Category Section Styles */
+
+
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(to right, var(--color-dark), #2A2020);
+  color: white;
+  padding: 3rem 0 1.5rem;
+  margin-top: 3rem;
+}
+
+/* Mengatur kontainer footer agar responsif dan terpusat */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  padding: 0 20px;
+}
+
+/* Mengatur gaya untuk judul di section footer */
+.footer-section h4 {
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 1.25rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  bottom: 0;
+  left: 0;
+  border-radius: var(--border-radius-full);
+}
+
+/* Mengatur gaya untuk daftar di section footer */
+.footer-section ul {
+  list-style: none;
+}
+
+/* Mengatur gaya untuk item daftar di section footer */
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+/* Mengatur gaya untuk link di section footer */
+.footer-section a {
+  color: var(--color-gray-300);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: inline-block;
+}
+
+/* Mengatur gaya hover untuk link di section footer */
+.footer-section a:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+/* Mengatur gaya untuk media sosial di footer */
+.social-media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.social-media a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-media a svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mengatur gaya untuk bagian bawah footer */
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-gray-400);
+  font-size: 0.9rem;
+}
+
+/* Styling untuk Section Produk */
+.products {
+  padding: 5rem 0;
+  text-align: center;
+  background-color: var(--color-gray-100);
+}
+
+.products-header {
+  margin-bottom: 3rem;
+}
+
+.products-header h2 {
+  font-size: 2.25rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.products-header h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: var(--border-radius-full);
+}
+
+.products-header p {
+  color: var(--color-gray-600);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-dark);
+}
+
+.product-price {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+/* Mengatur kontainer untuk rating di kartu produk */
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0.75rem auto;
+  justify-content: center;
+}
+
+/* Mengatur gaya untuk bintang rating di kartu produk */
+.star-rating {
+  display: flex;
+  font-size: 18px;
+  color: #FFD700;
+}
+
+/* Mengatur gaya untuk angka rating di kartu produk */
+.rating-number {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+}
+
+.product-button {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--border-radius-full);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: inline-block;
+  transition: all var(--transition-fast);
+}
+
+.product-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mengatur gaya untuk kontainer peta */
+.mapouter {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* Mengatur gaya untuk canvas peta */
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  width: 100%;
+  height: 220px;
+}
+
+/* Mengatur gaya untuk iframe peta */
+.gmap_iframe {
+  width: 100% !important;
+  height: 220px !important;
+  border-radius: var(--border-radius-lg);
+  border: none;
+}
+
+/* Contact items in footer */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  color: var(--color-gray-300);
+}
+
+.contact-link {
+  color: var(--color-secondary);
+}
+
+.contact-link:hover {
+  color: white;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gray-300);
+  transition: all var(--transition-normal);
+}
+
+.social-link:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Loading Animation Styles */
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(139, 90, 43, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--color-primary);
+  animation: spin 1s ease-in-out infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  min-height: 200px;
+}
+
+.loading-text {
+  margin-top: 15px;
+  color: var(--color-gray-600);
+  font-size: 0.9rem;
+}
+
+.loading-pulse {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(90deg, var(--color-gray-200) 25%, var(--color-gray-300) 50%, var(--color-gray-200) 75%);
+  background-size: 200% 100%;
+  animation: pulse 1.5s ease-in-out infinite;
+  border-radius: var(--border-radius-md);
+  margin: 5px 0;
+}
+
+@keyframes pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+
+  .hero-section {
+    height: 60vh;
   }
-  a:hover {
-    color: #747bff;
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  .footer-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .footer-section h4 {
+    font-size: 1.2rem;
+  }
+  
+  .footer-section h4::after {
+    width: 30px;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .social-media {
+    gap: 0.5rem;
+  }
+  
+  .footer-bottom {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+
+  .hero-section {
+    height: 55vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.25rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .hero-section {
+    height: 50vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .products-header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .footer-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .social-media {
+    order: 2;
+  }
+
+  .contact-item {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+  
+  .hero-section {
+    height: 45vh;
+  }
+  
+  .hero-content {
+    width: 90%;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .hero-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .products-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .social-media {
+    align-items: center;
+  }
+  
+  .footer-section a:hover {
+    transform: none;
+  }
+  
+  .contact-item {
+    justify-content: center;
+  }
+  
+  .social-link {
+    justify-content: center;
+  }
+  
+  .social-link:hover {
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  
+  .hero-section {
+    height: 40vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.5rem;
   }
 }

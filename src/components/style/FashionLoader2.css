@@ -1,0 +1,122 @@
+
+.fh-loader-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.fh-loader-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+}
+
+.fh-loader-brand h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #8B5A2B;
+  margin: 0;
+}
+
+.fh-loader-animation {
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fh-shirt-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fh-shirt-container:before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(139, 90, 43, 0.08);
+  animation: fh-pulse 2s infinite ease-in-out;
+}
+
+.fh-shirt-icon {
+  color: #8B5A2B;
+  opacity: 0.9;
+  animation: fh-float 3s infinite ease-in-out;
+}
+
+.fh-loading-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.fh-loader-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #f0e6d9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fh-loader-progress {
+  height: 100%;
+  width: 0;
+  background-color: #8B5A2B;
+  border-radius: 2px;
+  animation: fh-progress 2s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes fh-pulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+@keyframes fh-float {
+  0%, 100% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fh-progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .fh-loader-panel {
+    padding: 1.5rem;
+  }
+    
+  .fh-loader-logo {
+    width: 32px;
+    height: 32px;
+  }
+    
+  .fh-loader-brand h2 {
+    font-size: 1.25rem;
+  }
+}

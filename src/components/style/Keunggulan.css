@@ -1,0 +1,110 @@
+.keunggulan-section {
+    padding: 4rem 8%;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .keunggulan-section .judul {
+    font-size: 2.5rem;
+    color: #ac7638;
+    margin-bottom: 2.5rem;
+  }
+  
+  .fitur-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .fitur-card {
+    background-color: #fdfaf7;
+    border: 1px solid #e5d3b3;
+    padding: 2rem;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .fitur-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fitur-card .icon {
+    color: #ac7638;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .fitur-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .fitur-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .keunggulan-section {
+      padding: 2rem 5%;
+    }
+
+    .keunggulan-section .judul {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .fitur-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .fitur-card {
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .fitur-card .icon {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 0.5rem;
+    }
+
+    .fitur-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .fitur-card p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fitur-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .keunggulan-section .judul {
+      font-size: 1.8rem;
+    }
+
+    .fitur-card {
+      padding: 1rem;
+    }
+
+    .fitur-card h3 {
+      font-size: 0.9rem;
+    }
+
+    .fitur-card p {
+      font-size: 0.8rem;
+    }
+  }

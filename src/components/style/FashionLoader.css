@@ -1,0 +1,143 @@
+/* Simple Fashion Loader CSS */
+.simple-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loader-panel {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  width: 90%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.loader-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+}
+
+.loader-brand h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #8B5A2B;
+  margin: 0;
+}
+
+.loader-animation {
+  margin: 1rem 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shirt-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shirt-container:before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(139, 90, 43, 0.08);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.shirt-icon {
+  color: #8B5A2B;
+  opacity: 0.9;
+  animation: float 3s infinite ease-in-out;
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #f0e6d9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-progress {
+  height: 100%;
+  width: 0;
+  background-color: #8B5A2B;
+  border-radius: 2px;
+  animation: progress 2s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .loader-panel {
+    padding: 1.5rem;
+  }
+  
+  .loader-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .loader-brand h2 {
+    font-size: 1.25rem;
+  }
+}

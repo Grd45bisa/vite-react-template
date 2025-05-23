@@ -1,0 +1,299 @@
+.ulasan-wrapper {
+  margin: 40px 0;
+  padding: 0 30px;
+}
+
+.ulasan-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #333;
+}
+
+.ulasan-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 0 2rem 8px; /* Tambahkan padding kiri dan kanan */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ulasan-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ulasan-container::before,
+.ulasan-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ulasan-container::before {
+  left: 40px;
+  background: linear-gradient(to right, #FAF6F1, rgba(255, 255, 255, 0));
+}
+
+.ulasan-container::after {
+  right: 40px;
+  background: linear-gradient(to left, #FAF6F1, rgba(255, 255, 255, 0));
+}
+
+.ulasan-card {
+  min-width: 350px;
+  max-width: 350px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ulasan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ulasan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.produk-nama {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ulasan-rating .star {
+  font-size: 1rem;
+  color: #bbb;
+  margin-left: 4px;
+}
+
+.ulasan-rating .filled {
+  color: #f39c12;
+}
+
+.ulasan-komentar {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0.5rem 0 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.ulasan-pengguna {
+  font-size: 0.8rem;
+  color: #777;
+  text-align: right;
+  margin-top: auto;
+}
+
+.carousel-with-buttons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-button:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-button.left {
+  margin-right: 1rem;
+}
+
+.scroll-button.right {
+  margin-left: 1rem;
+}
+
+.ulasan-container {
+  padding-left: 3rem; /* Tambahkan padding kiri agar card pertama tidak terpotong */
+  padding-right: 3rem; /* Tambahkan padding kanan untuk keseimbangan */
+}
+
+@media screen and (max-width: 1200px) {
+  .ulasan-wrapper {
+    padding: 0 20px;
+  }
+
+  .ulasan-title {
+    font-size: 1rem;
+  }
+
+  .ulasan-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ulasan-card {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 12px;
+  }
+
+  .produk-nama {
+    font-size: 0.9rem;
+  }
+
+  .ulasan-komentar {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .ulasan-pengguna {
+    font-size: 0.7rem;
+  }
+
+}
+
+@media screen and (max-width: 850px) {
+  .ulasan-wrapper {
+    padding: 0 20px;
+  }
+
+.ulasan-container::before,
+.ulasan-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ulasan-container::before {
+  left: 0;
+  background: linear-gradient(to right, #FAF6F1, rgba(255, 255, 255, 0));
+}
+
+.ulasan-container::after {
+  right: 0;
+  background: linear-gradient(to left, #FAF6F1, rgba(255, 255, 255, 0));
+}
+
+  .ulasan-title {
+    font-size: 1rem;
+  }
+
+  .ulasan-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ulasan-card {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 12px;
+  }
+
+  .produk-nama {
+    font-size: 0.9rem;
+  }
+
+  .ulasan-komentar {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .ulasan-pengguna {
+    font-size: 0.7rem;
+  }
+
+  .scroll-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .ulasan-wrapper {
+    padding: 0 10px;
+  }
+
+  .ulasan-title {
+    font-size: 0.9rem;
+  }
+
+  .ulasan-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .ulasan-card {
+    min-width: 240px;
+    max-width: 240px;
+    padding: 8px;
+  }
+
+  .produk-nama {
+    font-size: 0.8rem;
+  }
+
+  .ulasan-komentar {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .ulasan-pengguna {
+    font-size: 0.6rem;
+  }
+
+  .scroll-button {
+    display: none;
+  }
+
+.ulasan-container::before,
+.ulasan-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  pointer-events: none;
+  z-index: 1;
+}
+}

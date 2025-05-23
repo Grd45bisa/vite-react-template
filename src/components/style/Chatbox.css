@@ -1,0 +1,1347 @@
+/* ===== CHATBOX MAIN STYLES ===== */
+.chatbox-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #efbf88;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.chatbox-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.chatbox-notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chatbox-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.chatbox-header {
+  padding: 15px;
+  background-color: #efbf88;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chatbox-close {
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.chatbox-close:hover {
+  transform: scale(1.2);
+}
+
+/* ===== CHAT MESSAGES AREA ===== */
+.chatbox-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.chat-message-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: relative;
+}
+
+.chat-message-container.user {
+  align-items: flex-end;
+}
+
+.chat-message-container.bot {
+  align-items: flex-start;
+}
+
+.chat-msg {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.chat-msg.user {
+  background-color: #efbf88;
+  color: #333;
+  border-bottom-right-radius: 5px;
+}
+
+.chat-msg.bot {
+  background-color: #ffffff;
+  color: #333;
+  border-bottom-left-radius: 5px;
+}
+
+.chat-msg.typing {
+  background-color: #ffffff;
+  padding: 10px;
+  width: 60px;
+}
+
+/* Message timestamp */
+.message-timestamp {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+  text-align: right;
+  padding-right: 5px;
+}
+
+/* Message status indicators */
+.message-status {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #999;
+}
+
+.status-sending .sending-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.status-sent, .status-read {
+  color: #4caf50;
+}
+
+.status-failed {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.status-failed:hover {
+  color: #d32f2f;
+}
+
+/* Message actions */
+.message-actions {
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0 5px;
+}
+
+.chat-message-container:hover .message-actions {
+  opacity: 1;
+}
+
+.message-actions button {
+  background: none;
+  border: none;
+  padding: 2px 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #999;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-actions button:hover {
+  color: #efbf88;
+  background-color: rgba(239, 191, 136, 0.1);
+}
+
+/* ===== PRODUCT CARD IN CHAT ===== */
+.chat-product-card-container {
+  width: 80%;
+  max-width: 280px;
+  margin-bottom: 6px;
+}
+
+.chat-product-card-container.user {
+  align-self: flex-end;
+}
+
+.chat-product-card-container.bot {
+  align-self: flex-start;
+}
+
+.chat-product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-product-image {
+  height: 120px;
+  width: 100%;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.chat-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chat-product-info {
+  padding: 10px;
+}
+
+.chat-product-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #333;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.chat-product-rating {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.chat-product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-product-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e07c24;
+  margin: 0;
+}
+
+.chat-product-stock {
+  font-size: 10px;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Star rating styles */
+.star {
+  font-size: 12px;
+  color: #ffc107;
+  margin-right: 1px;
+}
+
+.star.empty {
+  color: #e0e0e0;
+}
+
+.star.half {
+  position: relative;
+  color: #e0e0e0;
+}
+
+.star.half::before {
+  content: "★";
+  position: absolute;
+  color: #ffc107;
+  width: 50%;
+  overflow: hidden;
+}
+
+/* ===== TYPING INDICATOR ===== */
+.typing-loader {
+  display: flex;
+  gap: 5px;
+}
+
+.typing-loader span {
+  width: 8px;
+  height: 8px;
+  background-color: #999;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* ===== QUICK REPLIES ===== */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.quick-reply-button {
+  background-color: #fff;
+  border: 1px solid #efbf88;
+  border-radius: 15px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.quick-reply-button:hover {
+  background-color: #efbf88;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== SCROLL TO BOTTOM BUTTON ===== */
+.scroll-to-bottom-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.2s ease;
+}
+
+.scroll-to-bottom-button:hover {
+  background-color: #f5f5f5;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-to-bottom-button svg {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ===== INPUT AREA ===== */
+.chatbox-input-container {
+  position: relative;
+}
+
+.chatbox-input {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #eee;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chatbox-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  margin: 0 10px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.chatbox-input input:focus {
+  border-color: #efbf88;
+  box-shadow: 0 0 0 2px rgba(239, 191, 136, 0.2);
+}
+
+.attachment-button, .send-button {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+}
+
+.attachment-button:hover, .send-button:hover {
+  color: #efbf88;
+  background-color: rgba(239, 191, 136, 0.1);
+}
+
+.send-button {
+  color: #efbf88;
+}
+
+/* ===== COPY NOTIFICATION ===== */
+.copy-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 2000;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ===== PANEL STYLES ===== */
+.chatbox-panel {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 300px;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 11;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+  flex: 1;
+}
+
+.panel-close {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.panel-close:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ANSWER OPTIONS ===== */
+.answer-options-list {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-option-button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.answer-option-button:hover {
+  background-color: #f5f5f5;
+  border-color: #efbf88;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== DROPDOWN MENU ===== */
+.dropdown-menu-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.dropdown-menu-item-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.dropdown-menu-item-horizontal:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-3px);
+}
+
+.dropdown-menu-item-horizontal .dropdown-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu-item-horizontal:hover .dropdown-menu-icon {
+  background-color: #e5e5e5;
+}
+
+.dropdown-menu-item-horizontal span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===== TAB BUTTONS ===== */
+.chatbox-tabs {
+  border-top: 1px solid #eee;
+}
+
+.tab-button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.tab-button.active {
+  color: #efbf88;
+  border-bottom: 2px solid #efbf88;
+}
+
+/* ===== TAB PANEL CONTENT ===== */
+.tab-panel-content {
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* ===== SEARCH ===== */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 10px;
+  flex: 1;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.search-container:focus-within {
+  border-color: #efbf88;
+  box-shadow: 0 0 0 2px rgba(239, 191, 136, 0.2);
+}
+
+.search-icon {
+  color: #999;
+  margin-right: 5px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  background: transparent;
+}
+
+/* ===== LOADING STATES ===== */
+.loading-container, 
+.camera-placeholder, 
+.gallery-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  color: #999;
+}
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #efbf88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text,
+.camera-placeholder p, 
+.gallery-placeholder p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.error-container {
+  padding: 20px;
+  color: #d9534f;
+  text-align: center;
+}
+
+.error-text {
+  font-size: 14px;
+}
+
+.empty-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #999;
+  text-align: center;
+}
+
+.empty-results p {
+  font-size: 14px;
+}
+
+/* ===== RECOMMENDATION CARDS ===== */
+.recommendation-cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Chat product recommendation */
+.chat-product-recommendation {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+/* ===== ORDER LIST ===== */
+.order-list {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Order Card Message Styles */
+.order-card-message {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 60%;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.order-card-message:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.order-card-info {
+  padding: 12px;
+}
+
+.order-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.order-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-card-detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-card-detail-item:last-child {
+  border-bottom: none;
+}
+
+.order-card-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.order-card-value {
+  color: #333;
+  font-weight: 600;
+  text-align: right;
+}
+
+.order-card-value.order-status {
+  color: #4caf50;
+}
+
+.order-ask-btn {
+  width: 100%;
+  background-color: #efbf88;
+  border: none;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.order-ask-btn:hover {
+  background-color: #e2a662;
+  transform: translateY(-2px);
+}
+
+.order-ask-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== PRODUCT CARD STYLES ===== */
+.product-recommendation {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 10px 0;
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.product-recommendation:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+.product-card2 {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  width: 100%;
+}
+
+.product-card2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-image2 {
+  width: 100%;
+  height: 120px; /* Fixed height for uniform look */
+  background-color: #f9f9f9;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the area properly */
+  transition: transform 0.3s ease;
+}
+
+.product-card2:hover .product-image2 img {
+  transform: scale(1.05);
+}
+
+.product-info2 {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Let the info section grow to fill available space */
+}
+
+.product-name2 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  height: 36px; /* Fixed height for 2 lines */
+}
+
+.product-rating2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.product-price-stock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.product-price2 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e07c24;
+  margin: 0;
+}
+
+.product-stock2 {
+  font-size: 10px;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.product-ask-btn {
+  background-color: #e07c24;
+  color: #fff;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto; /* Push button to bottom of card */
+  text-align: center;
+}
+
+.product-ask-btn:hover {
+  background-color: #d17218;
+  transform: translateY(-2px);
+}
+
+.product-ask-btn:active {
+  transform: translateY(0);
+}
+
+/* Product category header */
+.product-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #eee;
+}
+
+.product-category-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.product-category-close {
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.product-category-close:hover {
+  color: #333;
+}
+
+/* Loading state animations */
+.products-loading-container {
+  padding: 12px;
+}
+
+.loading-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.loading-product-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  height: 100%;
+}
+
+.loading-product-image {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.loading-product-info {
+  padding: 10px;
+}
+
+.loading-product-title {
+  height: 36px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.loading-product-rating {
+  height: 12px;
+  width: 60%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.loading-product-price {
+  height: 16px;
+  width: 80%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.loading-product-button {
+  height: 30px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  /* Hide chatbox toggle on mobile */
+  .chatbox-toggle {
+    display: none;
+  }
+
+  /* Full screen chatbox on mobile */
+  .chatbox-container.mobile-view {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+
+  .chatbox-panel {
+    width: 100%;
+  }
+
+  .chatbox-input {
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    box-sizing: border-box;
+  }
+
+  .chatbox-input input {
+    width: 100%;
+    margin: 0 4px;
+  }
+  
+  .chatbox-messages {
+    padding: 12px;
+  }
+  
+  .chat-msg {
+    padding: 10px 14px;
+    max-width: 85%;
+  }
+  
+  .panel-title {
+    max-width: 200px;
+  }
+  
+  /* Product card in chat for mobile */
+  .chat-product-card-container {
+    width: 85%;
+    max-width: 260px;
+  }
+  
+  .chat-product-image {
+    height: 100px;
+  }
+  
+  .chat-product-name {
+    font-size: 12px;
+  }
+  
+  /* Quick replies for mobile */
+  .quick-replies {
+    padding: 0 5px;
+  }
+  
+  .quick-reply-button {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  
+
+  
+  .product-image2 {
+    height: 90px;
+  }
+  
+  .product-name2 {
+    font-size: 10px;
+    height: 30px;
+  }
+  
+  .product-price2 {
+    font-size: 11px;
+  }
+  
+  .product-stock2 {
+    font-size: 8px;
+    padding: 1px 4px;
+  }
+  
+  .product-ask-btn {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+
+  /* Ensure chatbox toggle is visible on desktop */
+  .chatbox-toggle {
+    display: flex;
+  }
+  
+}
+
+/* Add these styles to your existing Chatbox.css file */
+
+/* Auto-filled query styling */
+.chatbox-input-field.auto-filled {
+  background-color: rgba(239, 191, 136, 0.1);
+  border-color: #efbf88;
+  box-shadow: 0 0 0 2px rgba(239, 191, 136, 0.2);
+}
+
+/* Typing animation effect */
+.chatbox-input-field.typing-animation {
+  animation: typing-cursor 0.7s step-end infinite;
+}
+
+@keyframes typing-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: #efbf88; }
+}
+
+/* Processing indicator for input container */
+.chatbox-input-container.processing {
+  position: relative;
+}
+
+.chatbox-input-container.processing::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(to right, #efbf88, #e07c24);
+  animation: loading-bar 1.5s infinite ease-in-out;
+  z-index: 5;
+}
+
+@keyframes loading-bar {
+  0% { width: 0; left: 0; }
+  50% { width: 100%; left: 0; }
+  100% { width: 0; left: 100%; }
+}
+
+/* Disabled button styling during processing */
+.chatbox-input button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Enhanced opening animation for the chatbox when triggered from carousel */
+.chatbox-container.from-carousel {
+  animation: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: bottom right;
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Highlight effect for the chatbox when opened from carousel */
+.chatbox-container.highlight {
+  box-shadow: 0 0 0 3px rgba(239, 191, 136, 0.5), 0 8px 40px rgba(0, 0, 0, 0.2);
+  animation: highlight-pulse 1s ease;
+}
+
+@keyframes highlight-pulse {
+  0% { box-shadow: 0 0 0 0px rgba(239, 191, 136, 0.3), 0 8px 40px rgba(0, 0, 0, 0.2); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 191, 136, 0), 0 8px 40px rgba(0, 0, 0, 0.2); }
+  100% { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); }
+}
+
+/* Enhanced typing indicator for carousel-triggered messages */
+.typing-text-indicator {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.chatbox-input-container.processing .typing-text-indicator {
+  opacity: 1;
+}
+
+/* Custom scrollbar for chatbox messages to enhance visual appeal */
+.chatbox-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbox-messages::-webkit-scrollbar-track {
+  background: rgba(239, 191, 136, 0.1);
+  border-radius: 10px;
+}
+
+.chatbox-messages::-webkit-scrollbar-thumb {
+  background: rgba(239, 191, 136, 0.5);
+  border-radius: 10px;
+}
+
+.chatbox-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 191, 136, 0.7);
+}

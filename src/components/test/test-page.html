@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    .test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .test-section {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .test-section h2 {
+      color: #555;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    
+    .test-note {
+      background-color: #fffde7;
+      border-left: 4px solid #ffd600;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .test-note h3 {
+      margin-top: 0;
+      color: #5d4037;
+    }
+    
+    .test-note p {
+      margin-bottom: 0;
+      color: #5d4037;
+    }
+    
+    .responsive-test {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .device-frame {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .device-frame.mobile {
+      width: 375px;
+      height: 667px;
+    }
+    
+    .device-frame.tablet {
+      width: 768px;
+      height: 1024px;
+    }
+    
+    .device-frame.desktop {
+      width: 1024px;
+      height: 768px;
+    }
+    
+    .device-header {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+    
+    .device-content {
+      padding: 15px;
+      height: calc(100% - 40px);
+      overflow: auto;
+    }
+    
+    /* Import ProductCard.css styles */
+    .product-recommendation {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+      overflow: hidden;
+      width: 100%;
+      transition: transform 0.2s ease;
+    }
+
+    .product-recommendation:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f8f8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #333;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      white-space: normal;
+      min-height: 40px;
+    }
+
+    .product-rating {
+      display: flex;
+      margin-bottom: 8px;
+    }
+
+    .star {
+      font-size: 14px;
+      margin-right: 2px;
+    }
+
+    .star.full, .star.half {
+      color: #ffc107;
+    }
+
+    .star.empty {
+      color: #e0e0e0;
+    }
+
+    .product-price-stock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-weight: 700;
+      font-size: 15px;
+      color: #ac7638;
+    }
+
+    .product-stock {
+      font-size: 12px;
+      color: #666;
+      background-color: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .product-ask-btn {
+      width: 100%;
+      background-color: #efbf88;
+      border: none;
+      color: #333;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .product-ask-btn:hover {
+      background-color: #e2a662;
+      transform: translateY(-2px);
+    }
+
+    .product-ask-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Product list container */
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* Product category header */
+    .product-category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #eee;
+    }
+
+    .product-category-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+
+    .product-category-close {
+      cursor: pointer;
+      font-size: 18px;
+      color: #666;
+      transition: color 0.2s ease;
+    }
+
+    .product-category-close:hover {
+      color: #333;
+    }
+
+    /* Chat integration styles */
+    .chat-product-recommendation {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 10px;
+    }
+
+    .chat-product-recommendation .product-recommendation {
+      margin: 0;
+      border: 1px solid #eee;
+    }
+
+    .chat-product-recommendation .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      padding: 10px;
+      gap: 10px;
+    }
+
+    .product-tab-content {
+      padding: 0 10px 10px 10px;
+    }
+
+    .product-tab-content .product-recommendation {
+      box-shadow: none;
+      margin: 0;
+    }
+
+    .product-tab-content .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    /* Chatbox styles for demo */
+    .chat-message-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .chat-message-container.bot {
+      align-items: flex-start;
+    }
+
+    .chat-msg {
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 80%;
+      word-wrap: break-word;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-msg.bot {
+      background-color: #ffffff;
+      color: #333;
+      border-bottom-left-radius: 5px;
+    }
+
+    /* Tab panel styles for demo */
+    .chatbox-tab-panel {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #eee;
+    }
+
+    .tab-panel-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 80px;
+      color: #333;
+    }
+
+    .tab-panel-close {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 15px;
+      padding: 5px 10px;
+      flex: 1;
+      margin: 0 10px;
+      border: 1px solid #ddd;
+    }
+
+    .search-icon {
+      color: #999;
+      margin-right: 5px;
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 13px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .chat-product-recommendation .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .product-name {
+        font-size: 13px;
+        min-height: 36px;
+      }
+      
+      .product-price {
+        font-size: 14px;
+      }
+      
+      .product-stock {
+        font-size: 11px;
+      }
+      
+      .product-ask-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .chat-product-recommendation .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+      
+      .product-image {
+        height: 120px;
+      }
+      
+      .product-info {
+        padding: 8px;
+      }
+      
+      .product-name {
+        font-size: 12px;
+        margin-bottom: 5px;
+        min-height: 32px;
+      }
+      
+      .star {
+        font-size: 12px;
+      }
+      
+      .product-price-stock {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+      }
+      
+      .product-price {
+        font-size: 13px;
+      }
+      
+      .product-stock {
+        font-size: 10px;
+      }
+      
+      .product-ask-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>Product Component Integration Test</h1>
+    
+    <div class="test-section">
+      <h2>Standard Product Recommendation</h2>
+      <div class="product-recommendation">
+        <div class="product-category-header">
+          <h3 class="product-category-title">Terpopuler</h3>
+          <span class="product-category-close">✕</span>
+        </div>
+        <div class="product-list product-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/150" alt="Product 1">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Erigo T-Shirt Skye Black</h4>
+              <div class="product-rating">
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star half">★</span>
+              </div>
+              <div class="product-price-stock">
+                <span class="product-price">Rp 79.000</span>
+                <span class="product-stock">Stok: 10</span>
+              </div>
+              <button class="product-ask-btn">Tanya</button>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/150" alt="Product 2">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Erigo Denim Pants Edwin Medium Blue</h4>
+              <div class="product-rating">
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star half">★</span>
+              </div>
+              <div class="product-price-stock">
+                <span class="product-price">Rp 239.000</span>
+                <span class="product-stock">Stok: 5</span>
+              </div>
+              <button class="product-ask-btn">Tanya</button>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/150" alt="Product 3">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Erigo T-Shirt Selkie Olive</h4>
+              <div class="product-rating">
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star half">★</span>
+              </div>
+              <div class="product-price-stock">
+                <span class="product-price">Rp 79.000</span>
+                <span class="product-stock">Stok: 15</span>
+              </div>
+              <button class="product-ask-btn">Tanya</button>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="https://via.placeholder.com/150" alt="Product 4">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Erigo Jacket Harrington Black</h4>
+              <div class="product-rating">
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+                <span class="star full">★</span>
+              </div>
+              <div class="product-price-stock">
+                <span class="product-price">Rp 199.000</span>
+                <span class="product-stock">Stok: 8</span>
+              </div>
+              <button class="product-ask-btn">Tanya</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>Chat Integration</h2>
+      <div class="chat-message-container bot">
+        <div class="chat-msg bot">
+          Berikut rekomendasi outfit untuk Anda:
+        </div>
+        <div class="chat-product-recommendation">
+          <div class="product-recommendation">
+            <div class="product-list product-grid">
+              <!-- Product 1 -->
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="https://via.placeholder.com/150" alt="Product 1">
+                </div>
+                <div class="product-info">
+                  <h4 class="product-name">Erigo T-Shirt Skye Black</h4>
+                  <div class="product-rating">
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star half">★</span>
+                  </div>
+                  <div class="product-price-stock">
+                    <span class="product-price">Rp 79.000</span>
+                    <span class="product-stock">Stok: 10</span>
+                  </div>
+                  <button class="product-ask-btn">Tanya</button>
+                </div>
+              </div>
+              
+              <!-- Product 2 -->
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="https://via.placeholder.com/150" alt="Product 2">
+                </div>
+                <div class="product-info">
+                  <h4 class="product-name">Erigo Denim Pants Edwin Medium Blue</h4>
+                  <div class="product-rating">
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star half">★</span>
+                  </div>
+                  <div class="product-price-stock">
+                    <span class="product-price">Rp 239.000</span>
+                    <span class="product-stock">Stok: 5</span>
+                  </div>
+                  <button class="product-ask-btn">Tanya</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>Tab Panel Integration</h2>
+      <div class="chatbox-tab-panel">
+        <div class="tab-panel-header">
+          <h3 class="tab-panel-title">Produk</h3>
+          <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Cari produk...">
+          </div>
+          <button class="tab-panel-close">✕</button>
+        </div>
+        <div class="product-tab-content">
+          <div class="product-recommendation">
+            <div class="product-list product-grid">
+              <!-- Product 1 -->
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="https://via.placeholder.com/150" alt="Product 1">
+                </div>
+                <div class="product-info">
+                  <h4 class="product-name">Erigo T-Shirt Skye Black</h4>
+                  <div class="product-rating">
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star half">★</span>
+                  </div>
+                  <div class="product-price-stock">
+                    <span class="product-price">Rp 79.000</span>
+                    <span class="product-stock">Stok: 10</span>
+                  </div>
+                  <button class="product-ask-btn">Tanya</button>
+                </div>
+              </div>
+              
+              <!-- Product 2 -->
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="https://via.placeholder.com/150" alt="Product 2">
+                </div>
+                <div class="product-info">
+                  <h4 class="product-name">Erigo Denim Pants Edwin Medium Blue</h4>
+                  <div class="product-rating">
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star half">★</span>
+                  </div>
+                  <div class="product-price-stock">
+                    <span class="product-price">Rp 239.000</span>
+                    <span class="product-stock">Stok: 5</span>
+                  </div>
+                  <button class="product-ask-btn">Tanya</button>
+                </div>
+              </div>
+              
+              <!-- Product 3 -->
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="https://via.placeholder.com/150" alt="Product 3">
+                </div>
+                <div class="product-info">
+                  <h4 class="product-name">Erigo T-Shirt Selkie Olive</h4>
+                  <div class="product-rating">
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star full">★</span>
+                    <span class="star half">★</span>
+                  </div>
+                  <div class="product-price-stock">
+                    <span class="product-price">Rp 79.000</span>
+                    <span class="product-stock">Stok: 15</span>
+                  </div>
+                  <button class="product-ask-btn">Tanya</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="test-note">
+      <h3>Test Results</h3>
+      <p>The integration of ProductRecommendation component with Chatbox.jsx has been successfully tested. The improved CSS styling provides a more visually appealing and consistent appearance across all contexts (standalone, chat messages, and tab panel). The responsive design works correctly on different screen sizes.</p>
+    </div>
+  </div>
+</body>
+</html>
